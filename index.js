@@ -93,14 +93,36 @@ function buildPhotoGridLatex(photoFilenames, labelPrefix) {
   return latex;
 }
 
-// --- ROTAS DA API ---
+// Configura o diretório de cache do Tectonic para o /tmp (exigência da Vercel)
+process.env.TECTONIC_CACHE_DIR = path.join(os.tmpdir(), 'tectonic-cache');
+
+// Identifica o executável do Tectonic (Windows local ou Linux na Vercel/Cloud Run)
+function getTectonicCommand() {
+  if (process.platform === 'win32') {
+    const localWinBin = path.join(process.cwd(), 'bin', 'tectonic.exe');
+    if (fs.existsSync(localWinBin)) return `"${localWinBin}"`;
+    return 'tectonic';
+  } else {
+    // Linux / Vercel Serverless
+    const linuxBin = path.join(process.cwd(), 'bin', 'tectonic-linux');
+    if (fs.existsSync(linuxBin)) {
+      try {
+        fs.chmodSync(linuxBin, 0o755);
+      } catch (chmodErr) {
+        console.warn('Aviso chmod:', chmodErr.message);
+      }
+      return `"${linuxBin}"`;
+    }
+    return 'tectonic';
+  }
+}
 
 // 1. Health Check
 app.get('/', (req, res) => {
   res.json({
     service: 'VistoriaPro LaTeX Compiler Engine',
     status: 'online',
-    runtime: 'Google Cloud Run',
+    runtime: process.env.VERCEL ? 'Vercel Serverless' : 'Node.js Standalone',
     endpoints: {
       health: 'GET /health',
       compile: 'POST /gerar-laudo'
@@ -186,10 +208,7 @@ app.post('/gerar-laudo', async (req, res) => {
     const texFilePath = path.join(workDir, 'laudo.tex');
     fs.writeFileSync(texFilePath, texContent, 'utf-8');
 
-    // Identifica o executável do Tectonic (local no Windows ou no PATH do Linux)
-    const localWinBin = path.join(process.cwd(), 'bin', 'tectonic.exe');
-    const tectonicCmd = fs.existsSync(localWinBin) ? `"${localWinBin}"` : 'tectonic';
-
+    const tectonicCmd = getTectonicCommand();
     console.log(`[Tectonic] Iniciando compilação do arquivo: ${texFilePath}`);
     
     // Tectonic compila e faz download automático de pacotes necessários
@@ -234,8 +253,12 @@ app.post('/gerar-laudo', async (req, res) => {
   }
 });
 
-// Porta padrão Cloud Run (process.env.PORT) ou 8080
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`⚡ Servidor LaTeX Cloud Run rodando na porta ${PORT}`);
-});
+// Inicialização de porta para modo standalone / local
+if (!process.env.VERCEL) {
+  const PORT = process.env.PORT || 8080;
+  app.listen(PORT, () => {
+    console.log(`⚡ Servidor LaTeX rodando na porta ${PORT}`);
+  });
+}
+
+export default app;

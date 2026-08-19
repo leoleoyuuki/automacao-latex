@@ -2,8 +2,8 @@
 node_modules/
 package-lock.json
 
-# Binários locais (o Docker baixa o Tectonic automaticamente no Railway)
-bin/
+# Binários locais do Windows (o tectonic-linux é comitado para a Vercel)
+bin/*.exe
 *.exe
 
 # Arquivos de log e depuração
