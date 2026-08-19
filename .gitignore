@@ -1,0 +1,28 @@
+# Dependências
+node_modules/
+package-lock.json
+
+# Binários locais (o Docker baixa o Tectonic automaticamente no Railway)
+bin/
+*.exe
+
+# Arquivos de log e depuração
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Arquivos compilados de teste / Temporários
+*.pdf
+/tmp/
+
+# Variáveis de ambiente
+.env
+.env.local
+.env.*.local
+
+# Arquivos de sistema e editores
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

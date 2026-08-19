@@ -1,0 +1,47 @@
+{
+  "nomeAutor": "Maria das Graças de Oliveira",
+  "numeroProcesso": "0012345-67.2026.8.19.0001",
+  "reuConcessionaria": "Light Serviços de Eletricidade S.A.",
+  "tipoAcao": "Ação Declaratória de Inexistência de Débito c/c Danos Morais",
+  "dataVistoria": "19/08/2026",
+  "numeroVistoria": "1",
+  "periodoVistoria": "Manhã (09:00 - 12:00)",
+  "representacaoAutor": "Presente (acompanhada pelo filho)",
+  "representacaoReu": "Ausente (devidamente intimada)",
+  "observacoesPresenca": "A vistoria foi realizada na presença da Autora e do assistente técnico.",
+  "numeroMedidor": "98765432-BR",
+  "medidorChip": "Sim (Telemetria Integrada)",
+  "condicoesMedidor": "Medidor lacrado, sem indícios visíveis de violação externa.",
+  "corteEnergia": "Não (Fornecimento ativo)",
+  "qtdPessoas": "4",
+  "qtdComodos": "5",
+  "numLampadas": "12",
+  "numTvs": "2",
+  "numVentiladores": "3",
+  "numVentiladoresTeto": "1",
+  "numArCondicionados": "2",
+  "numGeladeiras": "1",
+  "numChuveiros": "1",
+  "numMaquinasLavar": "1",
+  "numFreezers": "0",
+  "checklist": [
+    "Fotos da fachada do Imóvel",
+    "Fotos dos Eletrodomésticos e Quadro",
+    "Foto das Contas de Luz",
+    "Foto do Medidor e Lacre",
+    "Foto do Chip de Telemetria"
+  ],
+  "observacoesFinais": "Constatou-se que o padrão de entrada encontra-se em conformidade com as normas técnicas da concessionária. A carga instalada estimada condiz com a média histórica de consumo de 280 kWh/mês.",
+  "photosImovel": [
+    {
+      "name": "fachada.jpg",
+      "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
+    }
+  ],
+  "photosMedidor": [
+    {
+      "name": "medidor.jpg",
+      "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
+    }
+  ]
+}

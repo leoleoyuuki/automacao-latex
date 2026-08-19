@@ -1,0 +1,172 @@
+\documentclass[11pt,a4paper]{article}
+
+% --- PACOTES FUNDAMENTAIS ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{hyperref}
+
+% --- CONFIGURAÇÕES DE PÁGINA E MARGENS ---
+\geometry{
+    top=2.5cm,
+    bottom=2.5cm,
+    left=2.5cm,
+    right=2.5cm
+}
+
+% --- CORES FORENSES / IDENTIDADE VISUAL ---
+\definecolor{primary}{RGB}{31, 32, 34}       % Grafite institucional
+\definecolor{accent}{RGB}{184, 134, 11}      % Dourado clássico (Dark Goldenrod)
+\definecolor{lightgray}{RGB}{245, 245, 245}  % Fundo suave de tabelas
+\definecolor{bordergray}{RGB}{210, 210, 210} % Linhas de tabela
+
+% --- CABEÇALHO E RODAPÉ ---
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textbf{\color{primary}LAUDO DE VISTORIA PERICIAL} — \textit{Consumo de Energia}}
+\fancyhead[R]{\small\color{gray}Proc. N.º {{NUMERO_PROCESSO}}}
+\fancyfoot[L]{\footnotesize\color{gray}VistoriaPro — Sistema de Engenharia Diagnóstica}
+\fancyfoot[R]{\footnotesize\color{gray}Página \thepage\ de \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+% --- FORMATAÇÃO DE SEÇÕES ---
+\titleformat{\section}
+  {\normalfont\large\bfseries\color{primary}}
+  {\thesection.}{0.5em}{}
+  [{\color{accent}\titlerule[1.5pt]}]
+
+\titleformat{\subsection}
+  {\normalfont\normalsize\bfseries\color{primary}}
+  {\thesubsection}{0.5em}{}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\begin{document}
+
+% --- CAPA / CABEÇALHO DO DOCUMENTO ---
+\begin{center}
+    {\Large\textbf{\color{primary}LAUDO TÉCNICO DE CONSTATAÇÃO PERICIAL}}\\[4pt]
+    {\normalsize\textbf{\color{accent}PERÍCIA JUDICIAL EM ENERGIA ELÉTRICA}}\\[12pt]
+    \rule{\textwidth}{0.8pt}
+\end{center}
+
+\vspace{0.2cm}
+
+% --- QUADRO DE IDENTIFICAÇÃO DO PROCESSO ---
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\toprule
+\textbf{Processo Judicial N.º:} & {{NUMERO_PROCESSO}} \\
+\textbf{Tipo de Ação:}        & {{TIPO_ACAO}} \\
+\textbf{Autor(a):}            & \textbf{{{NOME_AUTOR}}} \\
+\textbf{Réu / Concessionária:} & {{REU_CONCESSIONARIA}} \\
+\textbf{Data da Diligência:}  & {{DATA_VISTORIA}} \\
+\textbf{N.º da Vistoria / Período:} & Vistoria {{NUMERO_VISTORIA}} — {{PERIODO_VISTORIA}} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\vspace{0.4cm}
+
+% --- SEÇÃO 1: OBJETIVO E LOCAL DA DILIGÊNCIA ---
+\section{Identificação da Diligência e Presença das Partes}
+
+Na data e horário supramencionados, procedeu-se à vistoria técnica presencial no imóvel objeto da presente lide pericial. Durante os trabalhos de campo, foram constatadas as seguintes presenças:
+
+\begin{itemize}
+    \item \textbf{Representação do Autor:} {{REPRESENTACAO_AUTOR}}
+    \item \textbf{Representação do Réu / Concessionária:} {{REPRESENTACAO_REU}}
+\end{itemize}
+
+\textit{{{OBSERVACOES_PRESENCA}}}
+
+\vspace{0.4cm}
+
+% --- SEÇÃO 2: DETALHES DO MEDIDOR E CARACTERÍSTICAS TÉCNICAS ---
+\section{Constatações da Unidade Consumidora e Medição}
+
+Procedeu-se à inspeção minuciosa dos equipamentos de medição instalados na unidade consumidora:
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{@{}X X@{}}
+\toprule
+\textbf{Parâmetro Inspecionado} & \textbf{Constatação Pericial} \\
+\midrule
+Número do Medidor               & \textbf{{{NUMERO_MEDIDOR}}} \\
+Tecnologia / Chip Integrado     & {{MEDIDOR_CHIP}} \\
+Condições Físicas e Lacres      & {{CONDICOES_MEDIDOR}} \\
+Fornecimento Ativo no Momento   & {{CORTE_ENERGIA}} \\
+Total de Moradores / Residentes & {{QTD_PESSOAS}} pessoa(s) \\
+Quantidade de Cômodos do Imóvel & {{QTD_COMODOS}} cômodo(s) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\vspace{0.4cm}
+
+% --- SEÇÃO 3: LEVANTAMENTO DE CARGAS E ELETRODOMÉSTICOS ---
+\section{Levantamento de Cargas e Equipamentos Elétricos}
+
+Realizou-se o inventário de todos os equipamentos elétricos existentes no imóvel no momento da perícia para composição da curva de demanda estimada:
+
+{{TABELA_ELETRODOMESTICOS}}
+
+\vspace{0.4cm}
+
+% --- SEÇÃO 4: CHECKLIST TÉCNICO ---
+\section{Checklist de Conformidade Técnica}
+
+\begin{itemize}
+{{CHECKLIST_ITENS}}
+\end{itemize}
+
+\vspace{0.4cm}
+
+% --- SEÇÃO 5: OBSERVAÇÕES E CONCLUSÕES TÉCNICAS ---
+\section{Observações Finais do Perito}
+
+{{OBSERVACOES_FINAIS}}
+
+\vspace{0.8cm}
+
+% --- SEÇÃO 6: REGISTRO FOTOGRÁFICO (ANEXO DE EVIDÊNCIAS) ---
+\newpage
+\section{Anexo Fotográfico de Evidências}
+\label{sec:fotos}
+
+As fotografias a seguir foram capturadas in loco pelo perito durante a diligência técnica e representam fielmente o estado das instalações:
+
+\subsection{Fotografias do Imóvel e Fachada}
+{{FOTOS_IMOVEL_LATEX}}
+
+\vspace{0.6cm}
+
+\subsection{Fotografias do Medidor e Detalhes Técnicos}
+{{FOTOS_MEDIDOR_LATEX}}
+
+\vspace{1.5cm}
+
+% --- ASSINATURA DO PERITO ---
+\begin{center}
+    \rule{8cm}{0.6pt}\\[4pt]
+    \textbf{Fabíola — Arquiteta \& Engenharia Diagnóstica}\\[2pt]
+    Perita Judicial Especialista\\
+    \textit{Documento gerado e autenticado via VistoriaPro}
+\end{center}
+
+\end{document}
