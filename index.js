@@ -227,7 +227,8 @@ app.post('/gerar-laudo', async (req, res) => {
       res.json({
         status: 'sucesso',
         filename: `Laudo_${data.numeroVistoria || '1'}_${(data.nomeAutor || 'Autor').replace(/\s+/g, '_')}.pdf`,
-        pdfBase64: pdfBuffer.toString('base64')
+        pdfBase64: pdfBuffer.toString('base64'),
+        texContent: texContent
       });
     } else {
       res.setHeader('Content-Type', 'application/pdf');
